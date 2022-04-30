@@ -1,0 +1,182 @@
+window.addEventListener("DOMContentLoaded", (event) => {
+
+    /*Configuration des URL de l'API */
+    const config = {
+        // Clef de connexion à l'API en developper
+        api_key: '7c30e92027c202407878367905bafe52',
+        // Url de base de l'API'
+        api_base_url: 'https://api.themoviedb.org/3/',
+        // Url de base des images de l'API en 1280p'
+        image_base_url: 'https://image.tmdb.org/t/p/w1280',
+        // Url de base des images de l'API en format original'
+        original_image_base_url: 'https://image.tmdb.org/t/p/original'
+    }
+
+    // Const BASE_URL = url de base de l'API
+    const BASE_URL = config.api_base_url
+    // Const API_KEY = Clef de connexion à l'API en developper
+    const API_KEY = config.api_key
+
+    const SEARCH_URL_MOVIE = BASE_URL + 'search/movie?api_key=' + API_KEY
+
+    const SEARCH_URL_TV = BASE_URL + 'search/tv?api_key=' + API_KEY
+
+    var search_result = document.querySelector('.search_cat_movie')
+
+    var input = document.getElementById('searchTerm')
+
+    var searchTerm = input.value
+
+    var current = document.querySelector('.current');
+    var next = document.querySelector('.next')
+    var prev = document.querySelector('.prev')
+    
+    current.innerHTML = 1
+
+    var currentPage = 1
+    
+
+    next.addEventListener('click', () => {
+        search_result.innerHTML = ""
+        currentPage++
+        current.innerHTML = '<p>'+ currentPage+'</p>'
+        getMovies(currentPage)  
+        prev.classList.remove('disabled')
+        
+    })
+
+    prev.addEventListener('click', () => {
+        if(currentPage > 1){
+            search_result.innerHTML = ""
+            currentPage--
+            getMovies(currentPage)
+            current.innerHTML = '<p>'+ currentPage+'</p>'
+        }  else {
+            prev.classList.add('disabled')
+        }
+    })
+
+    function getMovies(current){
+        fetch(SEARCH_URL_MOVIE + '&query=' + searchTerm + '&page=' + current)
+        .then(response => response.json())
+        .then(result => {
+            
+                current.textContent = result.page
+                var total = result.total_pages
+
+                var nbr_result = document.querySelector('.number_result')
+                nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
+                if (currentPage < total){
+                    var movies = result.results
+
+                    if (movies.length > 10){
+                        for (let i = 0; i < 20; i++){
+                            if(movies[i].poster_path == null){
+                                i++
+                            }
+                            search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                            // search_result.style.borderBottom = '1px solid #464141'
+                            search_result.style.paddingBottom = '3vh'
+                        }
+                    } else if (movies.length < 10){
+                        for (i = 0; i < movies.length; i++){
+                            if(movies[i].poster_path == null){
+                                i++
+                            }
+                            search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                            search_result.style.borderBottom = '1px solid #464141'
+                            search_result.style.paddingBottom = '3vh'
+                        }
+                    }
+                } else {
+                    currentPage = total -1
+                }
+            })
+    }
+
+    getMovies(currentPage)
+
+
+    /*--------------------------------------- LES SERIES ------------------------------- */
+    
+    var search_result_tv = document.querySelector('.search_cat_tv')
+
+    var input = document.getElementById('searchTerm')
+
+    var searchTerm = input.value
+
+    var current_tv = document.querySelector('.current_tv');
+    var next_tv = document.querySelector('.next_tv')
+    var prev_tv = document.querySelector('.prev_tv')
+    
+    current_tv.innerHTML = 1
+
+    var currentPageTv = 1
+    
+
+    next_tv.addEventListener('click', () => {
+        search_result_tv.innerHTML = ""
+        currentPageTv++
+        current_tv.innerHTML = '<p>'+ currentPageTv+'</p>'
+        getTv(currentPageTv)  
+        prev_tv.classList.remove('disabled')
+        
+    })
+
+    prev_tv.addEventListener('click', () => {
+        if(currentPageTv > 1){
+            search_result_tv.innerHTML = ""
+            currentPageTv--
+            getTv(currentPageTv)
+            current_tv.innerHTML = '<p>'+ currentPageTv+'</p>'
+        }  else {
+            prev_tv.classList.add('disabled')
+        }
+    })
+
+    function getTv(current_tv){
+        fetch(SEARCH_URL_TV + '&query=' + searchTerm + '&page=' + current_tv)
+        .then(response => response.json())
+        .then(result => {
+            
+                current_tv.textContent = result.page
+                var total = result.total_pages
+
+                var nbr_result = document.querySelector('.number_result')
+                nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
+                if (currentPage < total){
+                    var movies = result.results
+                    
+                    if (movies.length > 10){
+                        
+                        for (let i = 0; i < 20; i++){
+                            
+                            if(movies[i].backdrop_path == null){
+                                i++
+                            } else {
+                                search_result_tv.innerHTML += `<a href="detail.php?tv=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                                // search_result_tv.style.borderBottom = '1px solid #464141'
+                                search_result_tv.style.paddingBottom = '3vh'
+                            }
+                                
+                           
+                        }
+                    } else if (movies.length < 10){
+                        for (i = 0; i < movies.length; i++){
+                            if(movies[i].poster_path == null){
+                                i++
+                            }
+                            search_result_tv.innerHTML += `<a href="detail.php?tv=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                            // search_result_tv.style.borderBottom = '1px solid #464141'
+                            search_result_tv.style.paddingBottom = '3vh'
+                        }
+                    }
+                } else {
+                    currentPageTv = total -1
+                }
+            })
+    }
+
+    getTv(currentPageTv)
+    
+})

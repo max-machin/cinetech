@@ -1,0 +1,605 @@
+* {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    background-color: #202020;
+}
+
+/*------------------------------STYLE NAVBAR-----------------------------*/
+
+nav {
+    top: 0;
+    background: #373839;
+    position: sticky;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    padding: 0 80px;
+    z-index: 10;
+}
+nav a img {
+    height: 20px;
+}
+
+nav form {
+    opacity: 0.95;
+    width: 450px;
+    display: flex;
+    height: 40px;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+nav input {
+    padding-left: 1vh;
+    font-family: "Lato", sans-serif;
+    font-size: 17px;
+    width: 100%;
+}
+
+nav input:hover {
+    opacity: 0.9;
+}
+
+nav input:focus {
+    opacity: 0.9;
+    border: none;
+    outline: none;
+}
+
+nav form button {
+    padding: 0 15px;
+    background: rgba(1,180,228,1);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+}
+
+nav form button:hover {
+    transform: scale(1.04);
+    transition: .1s;
+    opacity: 1;
+}
+
+nav ul {
+    display: flex;
+    gap: 5vh;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav li a {
+    font-size: 17px;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.7;
+}
+
+nav li a:hover {
+    transition: .2s;
+    opacity: 1;
+}
+
+nav ul li a.active {
+    opacity: 1;
+    background: rgba(144,206,161,1) ;
+    background: linear-gradient(90deg, rgba(1,180,228,1) 0%, rgba(144,206,161,1)  100%);
+    padding: .8vh 1.8vh;
+    color: #171c24;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+nav ul li a.active:hover {
+    transition: .2s;
+    opacity: 0.8;
+}
+
+.none {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    nav {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    nav {
+        font-size: 17px;
+        padding: 0 2vh;
+        height: 60px;
+    }
+
+    nav a img {
+        margin-right: 1vh;
+        height: 15px;
+    }
+    nav>ul {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background: #171c24;
+        height: 60px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    nav ul li a {
+        margin: 0;
+    }
+}
+
+/*------------------------------STYLE GENERAL-----------------------------*/
+
+.scroll_container {
+    background-color: #171616;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    webkit-overflow-scrolling: touch;
+}
+
+.scroll_bloc {
+    margin: 13vh 4vh;
+}
+
+.scroll_container::-webkit-scrollbar {
+    height: 1vh;
+    background: #101010;
+}
+
+.scroll_container::-webkit-scrollbar-thumb {
+    background: #333533;
+    border-radius: 2px;
+    max-width: 20px;
+    width: 100%;
+}
+
+.scroll_container::-webkit-scrollbar-thumb:hover {
+    background: #464846;
+}
+
+.scroll_card a {
+    text-decoration: none;
+}
+
+.scroll_card {
+    cursor: pointer;
+    margin: 0 .7vh;
+    display: inline-block;
+}
+
+.scroll_card img {
+    height: 280px;
+    min-width: 190px;
+    max-width: 190px;
+    /* width: 150px; */
+    margin-bottom: 0;
+}
+
+.hover .scroll_card:hover {
+    transition: transform 400ms;
+    transform: scale(1.07);
+    border: 2px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+.scroll_card p {
+    font-size: 17px;
+    padding: .7vh;
+    margin-bottom: 0;
+    background-color: #3d3e40;
+    text-align: center;
+}
+
+.scroll_card p:nth-child(3) {
+    font-family: "Lato", sans-serif;
+    color: rgba(255, 255, 255, 0.547);
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.gen_title {
+    margin-top: 5vh;
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+}
+
+/*------------------------------STYLE INDEX-----------------------------*/
+
+.banner_section a {
+    text-decoration: none;
+}
+.banner-container {
+    margin-top: 7vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 300px;
+  }
+  
+.banner {
+    border: 3px solid #464444;
+    border-radius: 5px;
+    position: relative;
+    width: 68rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.banner:hover  .image-block_movie, .banner:hover  .image-block_tv{
+    opacity: 0.60;
+    transform: scale(1.09);
+    transition: .5s;
+}
+
+.ban_mov{
+    margin-right: 45vh;
+}
+
+.ban_tv {
+    margin-left: 40vh;
+}
+
+.banner:before {
+    position: absolute;
+    right: 500px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #141415;
+    transform: skew(45deg);
+    transform-origin: right bottom;
+    z-index: 2;
+}
+
+.banner-title {
+    max-width: 800px;
+    padding-left: 2rem;
+    margin: 0;
+    color: white;
+    font-size: 50px;
+    line-height: 64px;
+    font-family: korolev, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+        z-index: 3;
+}
+
+.image-block_movie {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(images/bannermovie1.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 900px;
+    z-index: 1;
+    backdrop-filter: blur(1px);
+}
+
+.image-block_tv {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(images/bannertv1.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 900px;
+    z-index: 1;
+}
+
+.scroll_bloc h2 {
+    margin-left: .5vh;
+    font-size: 30px;
+    font-family: "Oswlad", sans-serif;
+    color: #FFFFFF;
+    opacity: 0.9;
+}
+
+h2 i {
+    margin-left: 1vh;
+    color: rgba(1,180,228,1);
+}
+
+.head_card {
+    font-family: "Oswald", sans-serif;
+    color: #ffff;
+    opacity: 0.9;
+}
+
+
+/*------------------------------STYLE FILMS-----------------------------*/
+.categories {
+    gap: 3vh;
+    margin:5vh auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cate {
+    font-size: 17px;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    border-radius: 3px;
+    padding: 1.2vh 1.7vh;
+    background: rgba(1,180,228,1) ;
+    color: #171c24;
+    opacity: 0.95;
+}
+
+.cate:hover {
+    /* transition: .2s; */
+    /* opacity: 0.75; */
+    opacity: 0.8;
+}
+
+#clear {
+    background: #ff216E;
+}
+
+.no_result {
+    color: #fff;
+    opacity: 0.95;
+    font-size: 30px;
+}
+
+.highlight {
+    background: rgba(144,206,161,1);
+}
+
+.search_cat, .search_cat_tv, .search_cat_movie {
+    border-top: 1px solid #464141;
+    padding-top: 3vh;
+    gap: 1vh;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.search_cat div, .search_cat_tv div, .search_cat_movie div{
+    /* flex-grow: 1; */
+    cursor: pointer;
+}
+
+.search_cat img , .search_cat_tv img, .search_cat_movie img {
+    height: 300px;
+    max-width: 200px;
+}
+
+
+.search_cat div:hover {
+    transition: transform 400ms;
+    transform: scale(1.02);
+    border: 2px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+
+
+
+/*------------------------------STYLE DETAIL-----------------------------*/
+
+.movie_info {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movie_detail {
+    font-size: 18px;
+    font-family: "Lato", sans-serif;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.run_rate {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5vh;
+}
+
+.runtime {
+    margin: 5px 0;
+}
+
+.rate {
+    margin: 30px 0;
+}
+
+.rate i {
+    opacity: 0.6;
+}
+
+.movie_name {
+    font-family: "Oswald", sans-serif;
+    text-align: left;
+    margin-bottom:5px;
+    font-size: 55px;
+    font-weight: 500;
+}
+
+.genres {
+    opacity: 0.6;
+    margin-bottom: 30px;
+}
+
+.des {
+    width: 70%;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+.rea {
+    margin-bottom: 20px;
+    margin-right: 100px;
+}
+
+.rea span, .country_prod span , .runtime span, .creator span, .networks span {
+    opacity: 0.6;
+}
+
+.networks {
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+}
+
+.networks img {
+    height: 35px;
+}
+
+.trailer_container , .casting {
+    padding: 4vw 5vw 0;
+}
+
+.casting {
+    margin: 0;
+}
+
+.casting h2 {
+    text-align: left;
+    font-family: "Lato", sans-serif;
+    font-size: 35px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.casting_content:hover {
+    transform: scale(1);
+}
+
+.trailer_container {    
+    text-align: left;
+    color: #fff;
+}
+
+.trailer_content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.heading {
+    font-size: 35px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+iframe {
+    width: 400px;
+    height: 200px;
+    padding: 1vh;
+}
+
+.recom {
+    margin-bottom: 0;
+    padding: 4vw 0;
+    border-top: 1px solid #3d3e40;
+}
+
+
+/*------------------------------STYLE SEARCH-----------------------------*/
+
+.number_result {
+    font-family: "Oswald", sans-serif;
+    color: #fff;
+    margin: 5vh 4vw;
+    font-size: 60px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.number_result span {
+    color: rgba(1,180,228,1) ;
+}
+
+.search_section .title_div {
+    margin-left: 4vw;
+    text-align: left;
+    font-family: "Oswald", sans-serif;
+    font-size: 45px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.pagination {
+    margin: 3vh 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vh;
+}
+
+.pagination div {
+    border-radius: 2px;
+    padding: 1vh 1.7vh;
+    border: 1px solid #e6e6e6;
+}
+
+.cu {
+    font-size: 20px;
+}
+
+.pr, .ne {
+    font-weight: 300;
+    background-color: #fff;
+    color: #101010;
+    opacity: 0.9;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.pr:hover, .ne:hover {
+    opacity: 0.75;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
