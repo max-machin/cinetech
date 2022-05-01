@@ -22,8 +22,8 @@
             <li><a class="active" href="index.php">Home</a></li>
             <li><a href="films.php">Films</a></li>
             <li><a href="series.php">Séries</a></li>
-            <li><a href=""><i class="fa-solid fa-user"></i></a></li>
-            <li><a href=""><i class="fa-solid fa-power-off"></i></a></li>
+            <li><a href="user.php"><i class="fa-solid fa-user"></i></a></li>
+            <!-- <li><a href=""><i class="fa-solid fa-power-off"></i></a></li> -->
         </ul>
     </nav>
 

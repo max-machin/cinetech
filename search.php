@@ -16,7 +16,7 @@ if($_GET['search'] == ""){
             </div>
         </div>
 
-        <div class="pagination">
+        <div class="pagination pagi_mov">
             <div class="prev disabled pr"><i class="fa-solid fa-angle-left"></i></div>
             <div class="current cu"></div>
             <div class="next ne"><i class="fa-solid fa-angle-right"></i></div>
@@ -29,7 +29,7 @@ if($_GET['search'] == ""){
             </div>
         </div>
 
-        <div class="pagination">
+        <div class="pagination pagi_tv">
             <div class="prev_tv disabled_tv pr"><i class="fa-solid fa-angle-left"></i></div>
             <div class="current_tv cu"></div>
             <div class="next_tv ne"><i class="fa-solid fa-angle-right"></i></div>

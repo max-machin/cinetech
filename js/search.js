@@ -30,6 +30,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var current = document.querySelector('.current');
     var next = document.querySelector('.next')
     var prev = document.querySelector('.prev')
+
+    var pagi_mov = document.querySelector('.pagi_mov')
+
+    var pagi_tv = document.querySelector('.pagi_tv')
     
     current.innerHTML = 1
 
@@ -63,33 +67,37 @@ window.addEventListener("DOMContentLoaded", (event) => {
             
                 current.textContent = result.page
                 var total = result.total_pages
+                if (result.total_results > 0){
+                    var nbr_result = document.querySelector('.number_result')
+                    nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
+                    if (currentPage < total){
+                        var movies = result.results
 
-                var nbr_result = document.querySelector('.number_result')
-                nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
-                if (currentPage < total){
-                    var movies = result.results
-
-                    if (movies.length > 10){
-                        for (let i = 0; i < 20; i++){
-                            if(movies[i].poster_path == null){
-                                i++
+                        if (movies.length > 10){
+                            for (let i = 0; i < 20; i++){
+                                if(movies[i].poster_path == null){
+                                    i++
+                                }
+                                search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                                // search_result.style.borderBottom = '1px solid #464141'
+                                search_result.style.paddingBottom = '3vh'
                             }
-                            search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
-                            // search_result.style.borderBottom = '1px solid #464141'
-                            search_result.style.paddingBottom = '3vh'
-                        }
-                    } else if (movies.length < 10){
-                        for (i = 0; i < movies.length; i++){
-                            if(movies[i].poster_path == null){
-                                i++
+                        } else if (movies.length < 10){
+                            for (i = 0; i < movies.length; i++){
+                                if(movies[i].poster_path == null){
+                                    i++
+                                }
+                                search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                                search_result.style.borderBottom = '1px solid #464141'
+                                search_result.style.paddingBottom = '3vh'
                             }
-                            search_result.innerHTML += `<a href="detail.php?movie=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
-                            search_result.style.borderBottom = '1px solid #464141'
-                            search_result.style.paddingBottom = '3vh'
                         }
+                    } else {
+                        currentPage = total -1
                     }
                 } else {
-                    currentPage = total -1
+                    pagi_mov.style.display = 'none'
+                    search_result.innerHTML = '<h2 class="no_result">Aucun résultat.</h2>'
                 }
             })
     }
@@ -140,39 +148,44 @@ window.addEventListener("DOMContentLoaded", (event) => {
         .then(result => {
             
                 current_tv.textContent = result.page
-                var total = result.total_pages
 
-                var nbr_result = document.querySelector('.number_result')
-                nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
-                if (currentPage < total){
-                    var movies = result.results
-                    
-                    if (movies.length > 10){
+                var total = result.total_pages
+                if(result.total_results > 0){
+                    var nbr_result = document.querySelector('.number_result')
+                    nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
+                    if (currentPage < total){
+                        var tv = result.results
                         
-                        for (let i = 0; i < 20; i++){
+                        if (tv.length > 10){
                             
-                            if(movies[i].backdrop_path == null){
-                                i++
-                            } else {
-                                search_result_tv.innerHTML += `<a href="detail.php?tv=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
+                            for (let i = 0; i < 20; i++){
+                                
+                                if(tv[i].backdrop_path == null){
+                                    i++
+                                } else {
+                                    search_result_tv.innerHTML += `<a href="detail.php?tv=${tv[i].id}"><div><img src="${config.image_base_url + tv[i].poster_path}"></div></a>`
+                                    // search_result_tv.style.borderBottom = '1px solid #464141'
+                                    search_result_tv.style.paddingBottom = '3vh'
+                                }
+                                    
+                            
+                            }
+                        } else if (tv.length < 10){
+                            for (i = 0; i < tv.length; i++){
+                                if(tv[i].poster_path == null){
+                                    i++
+                                }
+                                search_result_tv.innerHTML += `<a href="detail.php?tv=${tv[i].id}"><div><img src="${config.image_base_url + tv[i].poster_path}"></div></a>`
                                 // search_result_tv.style.borderBottom = '1px solid #464141'
                                 search_result_tv.style.paddingBottom = '3vh'
                             }
-                                
-                           
                         }
-                    } else if (movies.length < 10){
-                        for (i = 0; i < movies.length; i++){
-                            if(movies[i].poster_path == null){
-                                i++
-                            }
-                            search_result_tv.innerHTML += `<a href="detail.php?tv=${movies[i].id}"><div><img src="${config.image_base_url + movies[i].poster_path}"></div></a>`
-                            // search_result_tv.style.borderBottom = '1px solid #464141'
-                            search_result_tv.style.paddingBottom = '3vh'
-                        }
+                    } else {
+                        currentPageTv = total -1
                     }
                 } else {
-                    currentPageTv = total -1
+                    pagi_tv.style.display = 'none'
+                    search_result_tv.innerHTML = '<h2 class="no_result">Aucun résultat.</h2>'
                 }
             })
     }

@@ -13,7 +13,7 @@ body {
 
 nav {
     top: 0;
-    background: #373839;
+    background: #151515;
     position: sticky;
     width: 100%;
     display: flex;
@@ -131,7 +131,7 @@ nav ul li a.active:hover {
         width: 100%;
         bottom: 0;
         left: 0;
-        background: #171c24;
+        background: #101010;
         height: 60px;
         justify-content: space-evenly;
         align-items: center;
@@ -141,6 +141,237 @@ nav ul li a.active:hover {
         margin: 0;
     }
 }
+
+/*------------------------------STYLE FOOTER-----------------------------*/
+footer{
+    position: relative;
+    background: #151515;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  footer::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100px;
+    height: 1px;
+    width: 100%;
+    background: #AFAFB6;
+  }
+  footer .content{
+    max-width: 1250px;
+    margin: auto;
+    padding: 30px 40px 40px 40px;
+  }
+  footer .content .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  .content .top .logo-details img{
+    height: 40px;
+  }
+  .content .top .media-icons{
+    display: flex;
+  }
+  .content .top .media-icons a{
+    height: 40px;
+    width: 40px;
+    margin: 0 8px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 17px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+  .top .media-icons a:nth-child(1){
+    background: #4267B2;
+  }
+  .top .media-icons a:nth-child(1):hover{
+    color: #4267B2;
+    background: #fff;
+  }
+  .top .media-icons a:nth-child(2){
+    background: #1DA1F2;
+  }
+  .top .media-icons a:nth-child(2):hover{
+    color: #1DA1F2;
+    background: #fff;
+  }
+  .top .media-icons a:nth-child(3){
+    background: #E1306C;
+  }
+  .top .media-icons a:nth-child(3):hover{
+    color: #E1306C;
+    background: #fff;
+  }
+  .top .media-icons a:nth-child(4){
+    background: #0077B5;
+  }
+  .top .media-icons a:nth-child(4):hover{
+    color: #0077B5;
+    background: #fff;
+  }
+  .top .media-icons a:nth-child(5){
+    background: #FF0000;
+  }
+  .top .media-icons a:nth-child(5):hover{
+    color: #FF0000;
+    background: #fff;
+  }
+  footer .content .link-boxes{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 5 - 10px);
+  }
+  .content .link-boxes .box .link_name{
+    color: #fff;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .link-boxes .box .link_name::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 40px;
+    background: #fff;
+  }
+  .content .link-boxes .box li{
+    margin: 6px 0;
+    list-style: none;
+  }
+  .content .link-boxes .box li a{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.4s ease
+  }
+  .content .link-boxes .box li a:hover{
+    opacity: 1;
+    transition: .2s;
+  }
+  .content .link-boxes .input-box{
+    margin-right: 55px;
+  }
+  .link-boxes .input-box input{
+    height: 40px;
+    width: calc(100% + 55px);
+    outline: none;
+    border: 2px solid #AFAFB6;
+    background: #151515;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 15px;
+    color: #fff;
+    margin-top: 5px;
+  }
+  .link-boxes .input-box input::placeholder{
+    color: #AFAFB6;
+    font-size: 16px;
+  }
+  .link-boxes .input-box input[type="button"]{
+    background: #fff;
+    color: #151515;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 4px 0;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  .input-box input[type="button"]:hover{
+    opacity: 1;
+  }
+  footer .bottom-details{
+    width: 100%;
+    background: #101010;
+  }
+  footer .bottom-details .bottom_text{
+    max-width: 1250px;
+    margin: auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0.8;
+    text-decoration: none;
+  }
+  .bottom-details .bottom_text a:hover{
+    opacity: 1;
+    text-decoration: underline;
+  }
+  .bottom-details .bottom_text a{
+    margin-right: 10px;
+  }
+  @media (max-width: 900px) {
+    footer .content .link-boxes{
+      flex-wrap: wrap;
+    }
+    footer .content .link-boxes .input-box{
+      width: 40%;
+      margin-top: 10px;
+    }
+  }
+  @media (max-width: 700px){
+    footer{
+      position: relative;
+    }
+    .content .top .logo-details{
+      font-size: 26px;
+    }
+    .content .top .media-icons a{
+      height: 35px;
+      width: 35px;
+      font-size: 14px;
+      line-height: 35px;
+    }
+    footer .content .link-boxes .box{
+      width: calc(100% / 3 - 10px);
+    }
+    footer .content .link-boxes .input-box{
+      width: 60%;
+    }
+    .bottom-details .bottom_text span,
+    .bottom-details .bottom_text a{
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 520px){
+    footer::before{
+      top: 145px;
+    }
+    footer .content .top{
+      flex-direction: column;
+    }
+    .content .top .media-icons{
+      margin-top: 16px;
+    }
+    footer .content .link-boxes .box{
+      width: calc(100% / 2 - 10px);
+    }
+    footer .content .link-boxes .input-box{
+      width: 100%;
+    }
+  }
 
 /*------------------------------STYLE GENERAL-----------------------------*/
 
@@ -194,7 +425,7 @@ nav ul li a.active:hover {
     margin-bottom: 0;
 }
 
-.hover .scroll_card:hover {
+.hover .scroll_card:hover, .search_cat_movie div:hover, .search_cat_tv div:hover {
     transition: transform 400ms;
     transform: scale(1.07);
     border: 2px solid #e6e6e6;
@@ -589,11 +820,158 @@ iframe {
 }
 
 .disabled {
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
+/*------------------------------STYLE USER-----------------------------*/
 
+.section_user {
+    
+    margin: 10vh 0;
+    min-height: 50vh;
+    display: grid;
+    place-items: center;
+}
 
+.wrapper {
+    overflow: hidden;
+    font-family: "Lato", sans-serif;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 15px 20px rgba(0,0, 0, 0.1);
+}
+
+.wrapper .title_text {
+    display: flex;
+    width: 200%;
+}
+
+.wrapper .title_text .title {
+    width: 50%;
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .form_container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.form_container .slide_control {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    margin: 30px 0 10px 0;
+    overflow: hidden;
+    border-radius: 5px;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+}
+
+.slide_control .slide {
+    z-index: 1;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.slide_control .signup {
+    color: #000;
+}
+
+.slide_control .slide_tab {
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(1,180,228,1) 0%, rgba(144,206,161,1)  100%);
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+#signup:checked ~ .slide_tab {
+    left: 50%;
+}
+
+#signup:checked ~ .signup {
+    color: #fff;
+}
+
+#signup:checked ~ .login {
+    color: #000;
+}
+
+.form_container .form_inner {
+    display: flex;
+    width: 200%;
+}
+
+.form_container .form_inner form {
+    width: 50%;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form_inner form .field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form_inner form .field input:focus {
+    border-color: rgba(1,180,228,1);
+}
+
+.form_inner form .field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 15px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.form_inner form .signup_link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form_inner form .signup_link a{
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(1,180,228,1);
+}
+
+.form_inner form .signup_link a:hover {
+    text-decoration: underline;
+}
+
+form .field input[type="submit"]{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(1,180,228,1) 0%, rgba(144,206,161,1)  100%);
+}
 
 
 

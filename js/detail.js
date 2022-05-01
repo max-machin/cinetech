@@ -33,6 +33,26 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     
 
+    var content_movie_tv = document.querySelector('.movie_info')
+    var trailer_container = document.querySelector('.trailer_container')
+    var casting_content = document.querySelector('.casting')
+    var similaire_content = document.querySelector('.recom')
+
+    if (type == 'tv' || type == 'movie'){
+        see_detail()
+        casting()
+        video()
+        en_commun()
+
+    } else if (type == 'person'){
+        content_movie_tv.style.display = 'none'
+        trailer_container.style.display = 'none'
+        casting_content.style.display = 'none'
+        similaire_content.style.display = 'none'
+        see_detail()
+        console.log('ok')
+    }
+
 
     /**
      * 
@@ -52,7 +72,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
             .then(response => response.json())
             .then(result => {
                 console.log(result)
-                setup_movie_info(result)
+
+                if (type == "movie" || type == "tv"){
+                     setup_movie_info(result)
+                }
+               
                 
             })
             
@@ -159,8 +183,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 
             }
     }
-    see_detail()
-
+    
 
     function casting(){
         
@@ -222,7 +245,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 
             })
     }
-    casting()
+    
 
 
     function video(){
@@ -248,7 +271,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             })
     }
 
-    video()
+    
 
     function en_commun(){
         fetch(`${BASE_URL}${type}/${element_id}/similar?api_key=${API_KEY}&language=fr-FR`)
@@ -287,7 +310,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             })
     }
 
-    en_commun()
 })
 
     

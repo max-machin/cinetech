@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     film.className = "scroll_card"
 
                     film.innerHTML = `<a href="detail.php?movie=${movies[i].id}"><img src="${config.image_base_url + movies[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p>`
+                    <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
                     popular_movie_container.appendChild(film)
                 }
@@ -87,7 +87,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     serie.className = "scroll_card"
 
                     serie.innerHTML = `<a href="detail.php?tv=${tv[i].id}"><img src="${config.image_base_url + tv[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${tv[i].first_air_date}</p><p>Avis : ${tv[i].vote_average} <i class="fa-solid fa-star"></i></p>`
+                    <p class="head_card">${tv[i].first_air_date}</p><p>Avis : ${tv[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
                     
 
                     popular_tv_container.appendChild(serie)
@@ -121,7 +121,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     top_rated_movie.className = "scroll_card"
 
                     top_rated_movie.innerHTML = `<a href="detail.php?movie=${top_movie[i].id}"><img src="${config.image_base_url + top_movie[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p>`
+                    <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
                     top_rated_movie_container.appendChild(top_rated_movie)
                 }
@@ -156,7 +156,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     top_rated_serie.className = "scroll_card"
 
                     top_rated_serie.innerHTML = `<a href="detail.php?tv=${top_serie[i].id}"><img src="${config.image_base_url + top_serie[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${top_serie[i].first_air_date}</p><p>Avis : ${top_serie[i].vote_average} <i class="fa-solid fa-star"></i></p>`
+                    <p class="head_card">${top_serie[i].first_air_date}</p><p>Avis : ${top_serie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
                     top_rated_series_container.appendChild(top_rated_serie)
                 }
@@ -191,7 +191,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                     popular_person.className = "scroll_card"
 
-                    popular_person.innerHTML = `<img src="${config.image_base_url + person[i].profile_path}" class="img-fluid" >
+                    popular_person.innerHTML = `<a href="detail.php?person=${person[i].id}"><img src="${config.image_base_url + person[i].profile_path}" class="img-fluid" >
                     <p class="head_card">${person[i].name}</p>
                     <p> Popularité : ${person[i].popularity} </p>`
 
