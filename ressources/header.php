@@ -22,8 +22,18 @@
             <li><a class="active" href="index.php">Home</a></li>
             <li><a href="films.php">Films</a></li>
             <li><a href="series.php">Séries</a></li>
-            <li><a href="user.php"><i class="fa-solid fa-user"></i></a></li>
-            <!-- <li><a href=""><i class="fa-solid fa-power-off"></i></a></li> -->
+
+            <?php if (!isset($_SESSION['user_data'])){?>
+
+            <li><a href="inscription.php"><i class="fa-solid fa-user"></i></a></li>
+            <li><a href="connexion.php"><i class="fa-solid fa-power-off"></i></a></li>
+
+            <?php } elseif (isset($_SESSION['user_data'])){?>
+
+                <li><a class="profil" href="profil.php"><i class="fa-solid fa-user"></i></a></li>
+                <li><a class="deco" href="deconnexion.php"><i class="fa-solid fa-power-off"></i></a></li>
+
+            <?php }?>
         </ul>
     </nav>
 
