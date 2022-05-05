@@ -6,10 +6,9 @@ require 'traitement/login.php';
 <main>
     <section class="section_user">
         <div class="wrapper">
-            <div class="title_text">
-                <div class="title login">Connexion</div>
-            </div>
-           
+            
+            <div class="title login">Connexion</div>
+
             <div class="form_container">
 
                 <div class="form_inner">

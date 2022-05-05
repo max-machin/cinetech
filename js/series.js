@@ -172,6 +172,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     var series = result.results
 
                     for (let i = 0; i < 20; i++) {
+                        if(series[i].poster_path == null){
+                            i++
+                        }
                         var serie = document.createElement('div')
                         serie.className = "scroll_card"
 
@@ -205,6 +208,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var top_serie = result.results
                 for (let i = 0; i < 20; i++) {
+                    if(top_serie[i].poster_path == null){
+                        i++
+                    }
                     var top_rated_serie = document.createElement('div')
 
                     top_rated_serie.className = "scroll_card"
@@ -238,6 +244,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var on_the_air = result.results
                 for (let i = 0; i < 20; i++) {
+                    if (on_the_air[i].poster_path == null){
+                        i++
+                    }
                     var now_playing_serie = document.createElement('div')
 
                     now_playing_serie.className = "scroll_card"
@@ -271,6 +280,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 console.log(result)
                  var airing_today = result.results
                  for (let i = 0; i < 50; i++) {
+                     if(airing_today[i].poster_path == null){
+                         i++
+                     }
                      var airing_today_serie = document.createElement('div')
  
                      airing_today_serie.className = "scroll_card"

@@ -35,6 +35,18 @@ if($_GET['search'] == ""){
             <div class="current_tv cu"></div>
             <div class="next_tv ne"><i class="fa-solid fa-angle-right"></i></div>
         </div>
+
+        <h2 class="title_div">Les Artistes</h2>
+        <div class="grid_contain">
+            <div class="search_cat_person">
+            </div>
+        </div>
+
+        <div class="pagination pagi_person">
+            <div class="prev_person disabled_person pr"><i class="fa-solid fa-angle-left"></i></div>
+            <div class="current_person cu"></div>
+            <div class="next_person ne"><i class="fa-solid fa-angle-right"></i></div>
+        </div>
     </section>
 </main>
 <script src="js/search.js"></script>

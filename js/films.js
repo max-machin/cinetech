@@ -58,22 +58,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                                     if(movies.total_results > 18) {
                                         for(let i = 0; i < 18; i++){
-                                            if(movies.results[i].poster_path == null){
-                                                i++
+                                            if(movies.results[i].poster_path != null){
+                                                search_cat.innerHTML += `<a href="detail.php?movie=${movies.results[i].id}"><div><img src="${config.image_base_url + movies.results[i].poster_path}"></div></a>`
+                                                search_cat.style.borderBottom = '1px solid #464141'
+                                                search_cat.style.paddingBottom = '3vh'
                                             }
-                                            search_cat.innerHTML += `<a href="detail.php?movie=${movies.results[i].id}"><div><img src="${config.image_base_url + movies.results[i].poster_path}"></div></a>`
-                                            search_cat.style.borderBottom = '1px solid #464141'
-                                            search_cat.style.paddingBottom = '3vh'
+                                            
                                         }
                                     } else if (movies.total_results < 18 && movies.total_results != 0) {
                                        
                                         for(let i = 0; i < movies.results.length; i++){
-                                            if(movies.results[i].poster_path == null){
-                                                i++
+                                            if(movies.results[i].poster_path != null){
+                                                search_cat.innerHTML += `<a href="detail.php?movie=${movies.results[i].id}"><div><img src="${config.image_base_url + movies.results[i].poster_path}"></div></a>`
+                                                search_cat.style.borderBottom = '1px solid #464141'
+                                                search_cat.style.paddingBottom = '3vh'
                                             }
-                                            search_cat.innerHTML += `<a href="detail.php?movie=${movies.results[i].id}"><div><img src="${config.image_base_url + movies.results[i].poster_path}"></div></a>`
-                                            search_cat.style.borderBottom = '1px solid #464141'
-                                            search_cat.style.paddingBottom = '3vh'
+                                            
                                         }
                                     } else if (movies.total_results == 0) {
                                         search_cat.innerHTML = '<h2 class="no_result">Aucun résultat.</h2>'
@@ -171,13 +171,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                     var movies = result.results
                     for (let i = 0; i < 20; i++) {
-                        var film = document.createElement('div')
-                        film.className = "scroll_card"
-
-                        film.innerHTML = `<a href="detail.php?movie=${movies[i].id}"><img src="${config.image_base_url + movies[i].poster_path}" class="img-fluid" >
-                     <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
-
-                        popular_movie_container.appendChild(film)
+                        if(movies[i].poster_path != null){
+                            var film = document.createElement('div')
+                            film.className = "scroll_card"
+    
+                            film.innerHTML = `<a href="detail.php?movie=${movies[i].id}"><img src="${config.image_base_url + movies[i].poster_path}" class="img-fluid" >
+                            <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+    
+                            popular_movie_container.appendChild(film)
+                        }
                     }
                 })
 
@@ -202,14 +204,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var top_movie = result.results
                 for (let i = 0; i < 20; i++) {
-                    var top_rated_movie = document.createElement('div')
+                    if(top_movie[i].poster_path != null){
+                        var top_rated_movie = document.createElement('div')
 
-                    top_rated_movie.className = "scroll_card"
+                        top_rated_movie.className = "scroll_card"
 
-                    top_rated_movie.innerHTML = `<a href="detail.php?movie=${top_movie[i].id}"><img src="${config.image_base_url + top_movie[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+                        top_rated_movie.innerHTML = `<a href="detail.php?movie=${top_movie[i].id}"><img src="${config.image_base_url + top_movie[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
-                    top_rated_movie_container.appendChild(top_rated_movie)
+                        top_rated_movie_container.appendChild(top_rated_movie)
+                    }
+                    
                 }
             })
                
@@ -233,14 +238,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var now_playing = result.results
                 for (let i = 0; i < 20; i++) {
-                    var now_playing_movie = document.createElement('div')
+                    if(now_playing[i].poster_path != null){
+                        var now_playing_movie = document.createElement('div')
 
-                    now_playing_movie.className = "scroll_card"
-
-                    now_playing_movie.innerHTML = `<a href="detail.php?movie=${now_playing[i].id}"><img src="${config.image_base_url + now_playing[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${now_playing[i].release_date}</p><p>Avis : ${now_playing[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
-
-                    now_playing_movie_container.appendChild(now_playing_movie)
+                        now_playing_movie.className = "scroll_card"
+    
+                        now_playing_movie.innerHTML = `<a href="detail.php?movie=${now_playing[i].id}"><img src="${config.image_base_url + now_playing[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${now_playing[i].release_date}</p><p>Avis : ${now_playing[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+    
+                        now_playing_movie_container.appendChild(now_playing_movie)
+                    }
                 }
             })
                
@@ -264,14 +271,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var upcoming = result.results 
                 for (let i = 0; i < 50; i++) {
-                    var upcoming_movie = document.createElement('div')
+                    if (upcoming[i].poster_path != null){
+                        var upcoming_movie = document.createElement('div')
 
-                    upcoming_movie.className = "scroll_card"
+                        upcoming_movie.className = "scroll_card"
 
-                    upcoming_movie.innerHTML = `<a href="detail.php?movie=${upcoming[i].id}"><img src="${config.image_base_url + upcoming[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${upcoming[i].release_date}</p></a>`
+                        upcoming_movie.innerHTML = `<a href="detail.php?movie=${upcoming[i].id}"><img src="${config.image_base_url + upcoming[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${upcoming[i].release_date}</p></a>`
 
-                    upcoming_movie_container.appendChild(upcoming_movie)
+                        upcoming_movie_container.appendChild(upcoming_movie)
+                    }
                 }
             })
             

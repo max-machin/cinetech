@@ -54,27 +54,39 @@
         const tailleChar = new RegExp('(?=.{6,})')
 
         if (tailleChar.test(password)){
-            passClass[0].style.color = "green"
+            passClass[0].style.color = "rgb(10, 170, 10)"
+            passClass[0].style.opacity = "0.9"
+            passClass[0].style.fontWeight = "bold"
         } else {
-            passClass[0].style.color = "#141415"
+            passClass[0].style.color = "#9c9c9c"
+            passClass[0].style.fontWeight = "normal"
         }
 
         if (numero.test(password)){
-            passClass[1].style.color = "green"
+            passClass[1].style.color = "rgb(10, 170, 10)"
+            passClass[1].style.opacity = "0.9" 
+            passClass[1].style.fontWeight = "bold"      
         } else {
-            passClass[1].style.color = "#141415"
+            passClass[1].style.color = "#9c9c9c"
+            passClass[1].style.fontWeight = "normal"
         }
 
         if (majuscule.test(password)){
-            passClass[2].style.color = "green"
+            passClass[2].style.color = "rgb(10, 170, 10)"
+            passClass[2].style.opacity = "0.9" 
+            passClass[2].style.fontWeight = "bold"
         } else {
-            passClass[2].style.color = "#141415"
+            passClass[2].style.color = "#9c9c9c"
+            passClass[2].style.fontWeight = "normal"
         }
 
         if (minuscule.test(password)){
-            passClass[3].style.color = "green"
+            passClass[3].style.color = "rgb(10, 170, 10)"
+            passClass[3].style.opacity = "0.9"
+            passClass[3].style.fontWeight = "bold"
         } else {
-            passClass[3].style.color = "#141415"
+            passClass[3].style.color = "#9c9c9c"
+            passClass[3].style.fontWeight = "normal"
         }
 
         

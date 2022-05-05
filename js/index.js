@@ -43,13 +43,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 var movies = result.results
                
                 for (let i = 0; i < 20; i++) {
-                    var film = document.createElement('div')
-                    film.className = "scroll_card"
+                    if(movies[i].poster_path != null){
+                        var film = document.createElement('div')
+                        film.className = "scroll_card"
 
-                    film.innerHTML = `<a href="detail.php?movie=${movies[i].id}"><img src="${config.image_base_url + movies[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+                        film.innerHTML = `<a href="detail.php?movie=${movies[i].id}"><img src="${config.image_base_url + movies[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${movies[i].release_date}</p><p>Avis : ${movies[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
-                    popular_movie_container.appendChild(film)
+                        popular_movie_container.appendChild(film)
+                    }
                 }
             })
                
@@ -83,14 +85,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var tv = result.results
                 for (let i = 0; i < 20; i++) {
-                    var serie = document.createElement('div')
-                    serie.className = "scroll_card"
+                    if (tv[i].poster_path != null){
+                        var serie = document.createElement('div')
+                        serie.className = "scroll_card"
 
-                    serie.innerHTML = `<a href="detail.php?tv=${tv[i].id}"><img src="${config.image_base_url + tv[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${tv[i].first_air_date}</p><p>Avis : ${tv[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
-                    
+                        serie.innerHTML = `<a href="detail.php?tv=${tv[i].id}"><img src="${config.image_base_url + tv[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${tv[i].first_air_date}</p><p>Avis : ${tv[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+                        
 
-                    popular_tv_container.appendChild(serie)
+                        popular_tv_container.appendChild(serie)
+                    }
                 }
             })
                
@@ -99,7 +103,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
         return data
     }
-    popular_series()
 
 
     /*----------------------- les films les mieux notés  ------------------------- */
@@ -116,14 +119,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var top_movie = result.results
                 for (let i = 0; i < 20; i++) {
-                    var top_rated_movie = document.createElement('div')
+                    if(top_movie[i].poster_path != null){
+                        var top_rated_movie = document.createElement('div')
 
-                    top_rated_movie.className = "scroll_card"
+                        top_rated_movie.className = "scroll_card"
 
-                    top_rated_movie.innerHTML = `<a href="detail.php?movie=${top_movie[i].id}"><img src="${config.image_base_url + top_movie[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
+                        top_rated_movie.innerHTML = `<a href="detail.php?movie=${top_movie[i].id}"><img src="${config.image_base_url + top_movie[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${top_movie[i].release_date}</p><p>Avis : ${top_movie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
-                    top_rated_movie_container.appendChild(top_rated_movie)
+                        top_rated_movie_container.appendChild(top_rated_movie)
+                    }
                 }
             })
                
@@ -132,7 +137,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
         return data
     }
-    top_rated_movie()
 
 
     /*----------------------- les séries les mieux notés  ------------------------- */
@@ -150,15 +154,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 var top_serie = result.results
                 console.log(top_serie)
                 for (let i = 0; i < 20; i++) {
+                    if (top_serie[i].poster_path != null){
+                        var top_rated_serie = document.createElement('div')
 
-                    var top_rated_serie = document.createElement('div')
+                        top_rated_serie.className = "scroll_card"
 
-                    top_rated_serie.className = "scroll_card"
+                        top_rated_serie.innerHTML = `<a href="detail.php?tv=${top_serie[i].id}"><img src="${config.image_base_url + top_serie[i].poster_path}" class="img-fluid" >
+                        <p class="head_card">${top_serie[i].first_air_date}</p><p>Avis : ${top_serie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
 
-                    top_rated_serie.innerHTML = `<a href="detail.php?tv=${top_serie[i].id}"><img src="${config.image_base_url + top_serie[i].poster_path}" class="img-fluid" >
-                    <p class="head_card">${top_serie[i].first_air_date}</p><p>Avis : ${top_serie[i].vote_average} <i class="fa-solid fa-star"></i></p></a>`
-
-                    top_rated_series_container.appendChild(top_rated_serie)
+                        top_rated_series_container.appendChild(top_rated_serie)
+                    }
                 }
             })
                
@@ -167,7 +172,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
         return data 
     }
-    top_rated_series()
 
 
     /*----------------------- les artistes du moment  ------------------------- */
@@ -186,16 +190,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
                 var person = result.results
                 for (let i = 0; i < 20; i++){
+                    if(person[i].profile_path != null){
+                        var popular_person = document.createElement('div')
 
-                    var popular_person = document.createElement('div')
+                        popular_person.className = "scroll_card"
 
-                    popular_person.className = "scroll_card"
+                        popular_person.innerHTML = `<a href="detail.php?person=${person[i].id}"><img src="${config.image_base_url + person[i].profile_path}" class="img-fluid" >
+                        <p class="head_card">${person[i].name}</p>
+                        <p> Popularité : ${person[i].popularity} </p>`
 
-                    popular_person.innerHTML = `<a href="detail.php?person=${person[i].id}"><img src="${config.image_base_url + person[i].profile_path}" class="img-fluid" >
-                    <p class="head_card">${person[i].name}</p>
-                    <p> Popularité : ${person[i].popularity} </p>`
-
-                    popular_person_container.appendChild(popular_person)
+                        popular_person_container.appendChild(popular_person)
+                    }
                 }
             })
         } catch (error) {
@@ -204,6 +209,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
         return data 
 
     }
-
-    popular_person()
 })

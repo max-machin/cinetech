@@ -21,6 +21,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     const SEARCH_URL_TV = BASE_URL + 'search/tv?api_key=' + API_KEY
 
+    const SEARCH_URL_PERSON = BASE_URL + 'search/person?api_key=' + API_KEY
+
     var search_result = document.querySelector('.search_cat_movie')
 
     var input = document.getElementById('searchTerm')
@@ -34,6 +36,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var pagi_mov = document.querySelector('.pagi_mov')
 
     var pagi_tv = document.querySelector('.pagi_tv')
+
+    var pagi_person = document.querySelector('.pagi_person')
     
     current.innerHTML = 1
 
@@ -191,5 +195,95 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     getTv(currentPageTv)
+
+
+     /*--------------------------------------- LES SERIES ------------------------------- */
     
+     var search_result_person = document.querySelector('.search_cat_person')
+
+     var input = document.getElementById('searchTerm')
+ 
+     var searchTerm = input.value
+ 
+     var current_person = document.querySelector('.current_person');
+     var next_person = document.querySelector('.next_person')
+     var prev_person = document.querySelector('.prev_person')
+     
+     current_person.innerHTML = 1
+ 
+     var currentPageperson = 1
+     
+ 
+     next_person.addEventListener('click', () => {
+         search_result_person.innerHTML = ""
+         currentPageperson++
+         current_person.innerHTML = '<p>'+ currentPageperson+'</p>'
+         getPerson(currentPageperson)  
+         prev_person.classList.remove('disabled')
+         
+     })
+ 
+     prev_person.addEventListener('click', () => {
+         if(currentPageperson > 1){
+             search_result_person.innerHTML = ""
+             currentPageperson--
+             getPerson(currentPageperson)
+             current_person.innerHTML = '<p>'+ currentPageperson+'</p>'
+         }  else {
+             prev_person.classList.add('disabled')
+         }
+     })
+ 
+     function getPerson(current_person){
+         fetch(SEARCH_URL_PERSON + '&query=' + searchTerm + '&page=' + current_person)
+         .then(response => response.json())
+         .then(result => {
+             
+                 current_person.textContent = result.page
+ 
+                 var total = result.total_pages
+                 if(result.total_results > 0){
+                     var nbr_result = document.querySelector('.number_result')
+                     nbr_result.innerHTML = "<span>" + result.total_results + '</span>' + ' résultats pour : ' + searchTerm
+                     if (currentPageperson < total){
+                         var person = result.results
+                         
+                         if (person.length > 10){
+                             
+                             for (let i = 0; i < 20; i++){
+                                 
+                                 if(person[i].profile_path == null){
+                                     i++
+                                 } else {
+                                     search_result_person.innerHTML += `<a href="detail.php?person=${person[i].id}"><div>
+                                     <img src="${config.image_base_url + person[i].profile_path}"><p>${person[i].name}</p></div></a>`
+                                     // search_result_tv.style.borderBottom = '1px solid #464141'
+                                     search_result_person.style.paddingBottom = '3vh'
+                                 }
+                                     
+                             
+                             }
+                         } else if (person.length < 10){
+                             for (i = 0; i < person.length; i++){
+                                 if(person[i].poster_path == null){
+                                     i++
+                                 }
+                                 search_result_person.innerHTML += `<a href="detail.php?person=${person[i].id}"><div>
+                                 <img src="${config.image_base_url + person[i].profile_path}"><p>${person[i].name}</p></div></a>`
+                                 // search_result_tv.style.borderBottom = '1px solid #464141'
+                                 search_result_person.style.paddingBottom = '3vh'
+                             }
+                         }
+                     } else {
+                         currentPageperson = total -1
+                     }
+                 } else {
+                     pagi_person.style.display = 'none'
+                     search_result_person.innerHTML = '<h2 class="no_result">Aucun résultat.</h2>'
+                 }
+             })
+     }
+ 
+     getPerson(currentPageperson)
+
 })
